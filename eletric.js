@@ -35,7 +35,7 @@ function CA_botao() {
     document.getElementById("l_freq").innerHTML = `Frequencia: ${frequencia} Hertz`
 
 
-    let numPontos = 1000;
+    let numPontos = 100000;
 
     let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
 
@@ -86,7 +86,7 @@ function diodo_normal() {
     var frequencia = document.getElementById("freq").value;
     document.getElementById("l_freq").innerHTML = `Frequencia: ${frequencia} Hertz`
 
-    let numPontos = 1000;
+    let numPontos = 100000;
 
     let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
 
@@ -144,7 +144,7 @@ function diodo_retificado() {
 
     document.getElementById("l_freq").innerHTML = `Frequencia: ${frequencia} Hertz`
 
-    let numPontos = 1000;
+    let numPontos = 100000;
 
     let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
 
@@ -203,7 +203,7 @@ function diodo_zenner(){
     var V_zenner = document.getElementById("v_zenner").value;
     document.getElementById("l_vzenner").innerHTML = `T. Zenner: ${V_zenner} volts`
 
-    let numPontos = 1000;
+    let numPontos = 100000;
 
     let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
 
@@ -273,7 +273,7 @@ function tenso_diodo(){
     var V_zenner = document.getElementById("v_zenner").value;
     document.getElementById("l_vzenner").innerHTML = `T. Zenner: ${V_zenner} volts`
 
-    let numPontos = 1000;
+    let numPontos = 100000;
 
     let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
 
