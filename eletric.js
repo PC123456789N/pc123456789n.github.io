@@ -53,7 +53,7 @@ function CA_botao() {
     }];
 
     var layout = {
-        title: "grafico foda",
+        title: "Função CA Padrão",
         xaxis: {title: "Tensão (V)"},
         yaxis: {title: "Tempo (s)"},
         height: 300,
@@ -106,7 +106,7 @@ function diodo_normal() {
     }];
 
     var layout = {
-        title: "grafico foda",
+        title: "Função CA c/ Retificador meia onda",
         xaxis: {title: "Tensão (V)"},
         yaxis: {title: "Tempo (s)"},
         height: 300,
@@ -164,7 +164,7 @@ function diodo_retificado() {
     }];
 
     var layout = {
-        title: "grafico foda",
+        title: "Função CA c/ Retificador onda completa",
         xaxis: {title: "Tensão (V)"},
         yaxis: {title: "Tempo (s)"},
         height: 300,
@@ -234,7 +234,7 @@ function diodo_zenner(){
     }];
 
     var layout = {
-        title: "grafico foda",
+        title: "Função CA c/ Retificador zenner + onda completa",
         xaxis: {title: "Tensão (V)"},
         yaxis: {title: "Tempo (s)"},
         height: 300,
