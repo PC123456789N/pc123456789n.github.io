@@ -250,7 +250,7 @@ function diodo_zenner(){
 function tenso_diodo(){
     document.getElementById("tester").innerHTML = ""
 
-    document.getElementById("explain").innerHTML = "Esse gráfico se refere ao padrão de carga comum de um diodo padrão de Silicio. Um diodo de silício permite a passagem de corrente apenas em uma direção — do ânodo para o cátodo. Para que ele conduza, é necessário que a tensão aplicada no sentido direto (do ânodo para o cátodo) seja maior que a sua barreira de potencial, que é tipicamente de 0,7 volts."
+    document.getElementById("explain").innerHTML = "Esse gráfico se refere ao padrão de carga comum de um diodo padrão de Silicio. Um diodo de silício permite a passagem de corrente apenas em uma direção — do ânodo para o cátodo. Para que ele conduza, é necessário que a tensão aplicada no sentido direto (do ânodo para o cátodo) seja maior que a sua barreira de potencial, que é tipicamente de 0,7 volts. Caso o diodo seja anexado de forma inversa, a voltagem ira ser parada, até o ponto Zenner, que no caso é 6 volts, apos isso, o diodo quebrará e voltará a conduzir."
 
     document.getElementById("l_freq").style.display = "none";
     document.getElementById("freq").style.display = "none";
@@ -276,13 +276,15 @@ function tenso_diodo(){
     let numPontos = 100000;
 
     let x = Array.from({ length: numPontos }, (_, i) =>
-    -(2 *Math.PI) + (i * (4 * Math.PI)) / (numPontos - 1)
+    -(3 *Math.PI) + (i * (6 * Math.PI)) / (numPontos - 1)
 );
     let y = x.map(valorX => {
     let parte1 = Math.max(0, ( (10 ** valorX) - (0.007 ** 1.3) ) ) / 20;
     let parte2 = Math.min(0, valorX + 6) / 0.0001;
     let ampere = parte1 + parte2;
-    if (ampere >= 10000){
+    if (ampere > 10000){
+        return null
+    } else if(ampere < -10000) {
         return null
     } else{return ampere}
 });
@@ -299,7 +301,7 @@ function tenso_diodo(){
     }];
 
     var layout = {
-        title: "Grafico de Carga do Diodo",
+        title: "Grafico de Carga do Diodo(simplificado)",
         xaxis: {title: "Volts (V)"},
         yaxis: {title: "Amperes (I)"},
         height: 300,
@@ -315,6 +317,5 @@ function tenso_diodo(){
     
 
 }
-
 
 
