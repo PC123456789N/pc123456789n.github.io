@@ -279,7 +279,7 @@ function tenso_diodo(){
     -(3 *Math.PI) + (i * (6 * Math.PI)) / (numPontos - 1)
 );
     let y = x.map(valorX => {
-    let parte1 = Math.max(0, ( (10 ** valorX) - (0.007 ** 1.3) ) ) / 20;
+    let parte1 = Math.max(0, ( (10 ** valorX) - (0.007 ** 1.3) ) ) / 2;
     let parte2 = Math.min(0, valorX + 6) / 0.0001;
     let ampere = parte1 + parte2;
     if (ampere > 10000){
