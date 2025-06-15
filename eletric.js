@@ -258,8 +258,8 @@ function tenso_diodo(){
     document.getElementById("l_tenso").style.display = "none";
     document.getElementById("tenso").style.display = "none";
 
-    document.getElementById("v_zenner").style.display = "none";
-    document.getElementById("l_vzenner").style.display = "none";
+    document.getElementById("v_zenner").style.display = "block";
+    document.getElementById("l_vzenner").style.display = "block";
 
     //Volts e Frequencia em Hertz
     var amplitude = document.getElementById("tenso").value;
@@ -279,14 +279,22 @@ function tenso_diodo(){
     -(3 *Math.PI) + (i * (6 * Math.PI)) / (numPontos - 1)
 );
     let y = x.map(valorX => {
-    let parte1 = Math.max(0, ( (10 ** valorX) - (0.007 ** 1.3) ) ) / 2;
+    let parte1 = Math.max(0, ( (200 ** valorX ** 3) - (0.7 ** valorX) )/ 2 ) ;
     let parte2 = Math.min(0, valorX + 6) / 0.0001;
     let ampere = parte1 + parte2;
-    if (ampere > 10000){
+    if (ampere > 100){
         return null
-    } else if(ampere < -10000) {
+    } else if(ampere < -100) {
         return null
-    } else{return ampere}
+    } else if (valorX < -V_zenner){
+        return ampere = -100;
+    }
+    
+    
+    
+    else{return ampere}
+
+
 });
 
     
@@ -315,6 +323,116 @@ function tenso_diodo(){
 
 
     
+
+}
+
+function CA_quadrada() {
+    document.getElementById("tester").innerHTML = ""
+
+    document.getElementById("explain").innerHTML = "O gráfico exibido no osciloscópio mostra uma forma de onda quadratica, que é um tipo de sinal periódico comum em circuitos de chaveamento digital. A onda tipicamente alterna rapidamente entre um valor V e um valor de -V. No eixo horizontal (eixo X), temos o tempo, geralmente medido em segundos (T). Já o eixo vertical (eixo Y) representa a tensão, medida em volts (V)."
+
+
+    document.getElementById("l_freq").style.display = "inline";
+    document.getElementById("freq").style.display = "block";
+    
+    document.getElementById("l_tenso").style.display = "inline";
+    document.getElementById("tenso").style.display = "block";
+
+
+    document.getElementById("v_zenner").style.display = "none";
+    document.getElementById("l_vzenner").style.display = "none";
+
+    //Volts e Frequencia em Hertz
+    var amplitude = document.getElementById("tenso").value;
+    document.getElementById("l_tenso").innerHTML = `Tensao: ${amplitude} Volts`
+
+
+    var frequencia = document.getElementById("freq").value;
+    document.getElementById("l_freq").innerHTML = `Frequencia: ${frequencia} Hertz`
+
+
+    let numPontos = 10000;
+
+    let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
+
+    let y = x.map(valorX => amplitude * Math.sign( Math.sin( ((2 * Math.PI) * frequencia) * valorX)) );
+
+    
+
+
+    var dados = [{
+        x: x,
+        y: y,
+        mode: "lines",
+        name: "Senoide",
+        line: { color: 'blue' },
+    }];
+
+    var layout = {
+        title: "Função CA Padrão",
+        xaxis: {title: "Tempo (s)"},
+        yaxis: {title: "Tensão (V)"},
+        height: 300,
+        width: 900,
+        align: "center",
+     };
+
+    Plotly.newPlot("tester", dados, layout);
+
+}
+
+function CA_triangular() {
+    document.getElementById("tester").innerHTML = ""
+
+    document.getElementById("explain").innerHTML = "O gráfico exibido no osciloscópio mostra uma forma de onda Triangular, que é um tipo de sinal periódico incomum de corrente alternada (AC). Normalmente, obtida no gerador de sinais no modo TRIANGULAR. No entanto, No osciloscopio, tipicamente a zona Nula não é exibida No eixo horizontal (eixo X), temos o tempo, geralmente medido em segundos (T). Já o eixo vertical (eixo Y) representa a tensão, medida em volts (V)."
+
+
+    document.getElementById("l_freq").style.display = "inline";
+    document.getElementById("freq").style.display = "block";
+    
+    document.getElementById("l_tenso").style.display = "inline";
+    document.getElementById("tenso").style.display = "block";
+
+
+    document.getElementById("v_zenner").style.display = "none";
+    document.getElementById("l_vzenner").style.display = "none";
+
+    //Volts e Frequencia em Hertz
+    var amplitude = document.getElementById("tenso").value;
+    document.getElementById("l_tenso").innerHTML = `Tensao: ${amplitude} Volts`
+
+
+    var frequencia = document.getElementById("freq").value;
+    document.getElementById("l_freq").innerHTML = `Frequencia: ${frequencia} Hertz`
+
+
+    let numPontos = 10000;
+
+    let x = Array.from({length:numPontos}, (_, i) => i *(Math.PI * 2) / (numPontos-1));
+
+    let y = x.map(valorX => amplitude * (1- ((frequencia*valorX)%2)) );
+    
+    
+
+
+    var dados = [{
+        x: x,
+        y: y,
+        mode: "lines",
+        name: "Senoide",
+        line: { color: 'blue' },
+    }];
+
+    var layout = {
+        title: "Função CA Padrão",
+        xaxis: {title: "Tempo (s)"},
+        yaxis: {title: "Tensão (V)"},
+        height: 300,
+        width: 900,
+        align: "center",
+     };
+
+    Plotly.newPlot("tester", dados, layout);
 
 }
 

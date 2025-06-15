@@ -25,6 +25,8 @@
                     <button type="button" class="btn btn-outline-dark" onclick="diodo_retificado()">Seno com Diodo Retificador</button>
                     <button type="button" class="btn btn-outline-dark" onclick="diodo_zenner()">Senoide com Diodo Zenner</button>
                     <button type="button" class="btn btn-outline-dark" onclick="tenso_diodo()">Graficos de Carga do Diodo</button>
+                    <button type="button" class="btn btn-outline-dark" onclick="CA_quadrada()">Graficos de Onda Quadratica</button>
+                    <button type="button" class="btn btn-outline-dark" onclick="CA_triangular()">Graficos de Onda Triangular</button>
 
                 </div>
             </li>
@@ -47,7 +49,7 @@
                         <input type="range" name="freq" id="freq" class="form-range" min="0" max="10" onmousemove="atualizar()" value="1">
 
                         <label for="v_zenner" class="form-label"><em id="l_vzenner">T. Zenner: 0 Volts</em></label>
-                        <input type="range" name="v_zenner" id="v_zenner" class="form-range" min="0" max="20" style="display: none;" onmousemove="atualizar()" value="4">
+                        <input type="range" name="v_zenner" id="v_zenner" class="form-range" min="0" max="6" style="display: none;" onmousemove="atualizar()" value="4">
                     </div>
 
                 </form>
