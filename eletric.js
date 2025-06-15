@@ -1,3 +1,4 @@
+
 function atualizar(){
     var amplitude = document.getElementById("tenso").value;
     document.getElementById("l_tenso").innerHTML = `Tensao: ${amplitude} Volts`;
